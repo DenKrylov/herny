@@ -31,7 +31,7 @@ interface GameContextType {
 
 const GameContext = React.createContext<GameContextType>(null!);
 
-export function GameProvider({ children }: { children: React.ReactNode }) {
+export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     const socket = useSocketIO();
     const location = useLocation();
     const navigate = useNavigate();

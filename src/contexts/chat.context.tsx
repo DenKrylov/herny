@@ -78,7 +78,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     }, [channels, socket, auth.user?.id, navigate]);
 
     useEffect(() => {
-        function initChannels(data : any) {
+        const initChannels = (data : any) => {
             setPrivateChannels([]);
             setChannels([]);
 

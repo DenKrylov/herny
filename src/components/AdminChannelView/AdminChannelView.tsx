@@ -1,15 +1,15 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {useModal} from "../contexts/modal.context";
-import ModalWindow from "./Window";
-import "../styles/ChannelChat.css";
-import '../styles/ChannelRoster.css';
-import {useSocketIO} from "../contexts/socket.io.context";
+import {useModal} from "../../contexts/modal.context";
+import {ModalWindow} from "../Window/Window";
+import "../Channel/ChannelChat.css";
+import "../Channel/ChannelRoster.css";
+import {useSocketIO} from "../../contexts/socket.io.context";
 import {useInterval} from 'usehooks-ts';
-import uuidv4 from "../utils/uuid";
+import uuidv4 from "../../utils/uuid";
 
 
-export default function AdminChannelView() {
+export const AdminChannelView = () => {
     const socket = useSocketIO();
     const navigate = useNavigate();
 

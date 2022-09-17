@@ -1,9 +1,9 @@
-import {useAuth} from "../auth/auth.context";
+import {useAuth} from "../../auth/auth.context";
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Alert, Button, Card, Form, Stack} from "react-bootstrap";
 
-export default function SecondFa() {
+export const SecondFa = () => {
     const [code, setCode] = useState<string>('');
     const auth = useAuth();
     const navigate = useNavigate();

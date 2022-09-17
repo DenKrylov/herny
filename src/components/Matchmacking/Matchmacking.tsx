@@ -1,11 +1,11 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import React, {useRef, useState} from "react";
 import {useEffectOnce} from "usehooks-ts";
-import {useSocketIO} from "../contexts/socket.io.context";
+import {useSocketIO} from "../../contexts/socket.io.context";
 import {Box, Button} from "@mui/material";
 
 
-export default function Matchmacking() {
+export const Matchmacking = () => {
     const socket = useSocketIO();
     const location = useLocation();
     const navigate = useNavigate();

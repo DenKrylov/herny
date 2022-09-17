@@ -1,10 +1,10 @@
-import {useSocketIO} from "../contexts/socket.io.context";
-import {useGame} from "../contexts/game.context";
+import {useSocketIO} from "../../contexts/socket.io.context";
+import {useGame} from "../../contexts/game.context";
 import {useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {useEffectOnce} from "usehooks-ts";
 
-export default function Matchmacking() {
+export const Duel = () => {
     const socket = useSocketIO();
     const game = useGame();
     const navigate = useNavigate();

@@ -1,11 +1,11 @@
 import React, {useCallback, useState} from "react";
-import {useChat} from "../contexts/chat.context";
+import {useChat} from "../../contexts/chat.context";
 import {useNavigate} from "react-router-dom";
-import {useSocketIO} from "../contexts/socket.io.context";
+import {useSocketIO} from "../../contexts/socket.io.context";
 import {useEffectOnce, useInterval} from "usehooks-ts";
 import axios from "axios";
-import {useAuth} from "../auth/auth.context";
-import {API_URL, HTTP_PORT} from "../config";
+import {useAuth} from "../../auth/auth.context";
+import {API_URL, HTTP_PORT} from "../../config";
 import DeleteIcon from '@mui/icons-material/Delete';
 import Divider from '@mui/material/Divider';
 import SearchIcon from '@mui/icons-material/Search';
@@ -40,7 +40,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-export default function Channels() {
+export const Channels = () => {
     return (
         <Container>
             <Roster/>

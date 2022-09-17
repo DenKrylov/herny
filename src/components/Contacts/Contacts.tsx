@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
-import {useContact} from "../contexts/contact.context";
-import {useModal} from "../contexts/modal.context";
-import '../styles/Contacts.css'
-import ModalWindow from "./Window";
-import {useSocketIO} from "../contexts/socket.io.context";
+import {useContact} from "../../contexts/contact.context";
+import {useModal} from "../../contexts/modal.context";
+import './Contacts.css'
+import {ModalWindow} from "../Window/Window";
+import {useSocketIO} from "../../contexts/socket.io.context";
 import { MapOrEntries, useMap, useInterval } from 'usehooks-ts';
 
 
-export default function Contacts() {
+export const Contacts = () => {
 
     return (
         <>

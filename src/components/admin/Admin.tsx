@@ -1,16 +1,16 @@
-import {useAuth} from "../auth/auth.context";
+import {useAuth} from "../../auth/auth.context";
 import {Navigate, useNavigate} from "react-router-dom";
-import "../styles/Admin.css"
+import "./Admin.css"
 import axios from "axios";
 import React, {useEffect, useState} from "react";
-import {useSocketIO} from "../contexts/socket.io.context";
-import { useModal } from "../contexts/modal.context";
-import ModalWindow from './Window'
+import {useSocketIO} from "../../contexts/socket.io.context";
+import { useModal } from "../../contexts/modal.context";
+import {ModalWindow} from '../Window/Window'
 import {Alert} from "react-bootstrap";
-import {API_URL, HTTP_PORT} from "../config";
+import {API_URL, HTTP_PORT} from "../../config";
 
 
-export default function Admin() {
+export const Admin = () => {
     const auth = useAuth();
 
     if (auth.user.role !== 'Admin' && auth.user.role !== 'PO') {

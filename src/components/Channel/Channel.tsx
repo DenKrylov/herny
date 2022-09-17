@@ -1,18 +1,18 @@
 import React, {useEffect, useRef, useState} from "react";
-import {useChat} from "../contexts/chat.context";
+import {useChat} from "../../contexts/chat.context";
 import {useNavigate, useParams} from "react-router-dom";
-import {useAuth} from "../auth/auth.context";
-import {useModal} from "../contexts/modal.context";
-import ModalWindow from "./Window";
-import "../styles/ChannelChat.css";
-import '../styles/ChannelRoster.css';
-import {useSocketIO} from "../contexts/socket.io.context";
+import {useAuth} from "../../auth/auth.context";
+import {useModal} from "../../contexts/modal.context";
+import {ModalWindow} from "../Window/Window";
+import "../Channel/ChannelChat.css";
+import "../Channel/ChannelRoster.css";
+import {useSocketIO} from "../../contexts/socket.io.context";
 import {useEffectOnce, useInterval} from 'usehooks-ts';
 import {Alert, Form, Stack} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
 
-export default function Channel() {
+export const Channel = () => {
     const auth = useAuth();
     const navigate = useNavigate();
     const chat: any = useChat();

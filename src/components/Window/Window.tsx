@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import '../styles/Window.css';
+import './Window.css';
 import axios, { AxiosRequestConfig }  from 'axios';
-import {useModal} from "../contexts/modal.context";
-import {useContact} from "../contexts/contact.context";
-import {useChat} from "../contexts/chat.context";
+import {useModal} from "../../contexts/modal.context";
+import {useContact} from "../../contexts/contact.context";
+import {useChat} from "../../contexts/chat.context";
 import {useLocation, useNavigate} from "react-router-dom";
-import {useAuth} from "../auth/auth.context";
-import {useSocketIO} from "../contexts/socket.io.context";
-import {API_URL, HTTP_PORT} from "../config";
+import {useAuth} from "../../auth/auth.context";
+import {useSocketIO} from "../../contexts/socket.io.context";
+import {API_URL, HTTP_PORT} from "../../config";
 
 
-function ModalWindow()
-{
+export const ModalWindow = () => {
     const auth = useAuth();
     const contact = useContact();
     const modalWindow = useModal();
@@ -26,28 +25,24 @@ function ModalWindow()
         top: modalWindow.y,
     }
 
-    function friend_exit()
-    {
+    const friend_exit = () => {
         modalWindow.setIsActive(false);
         contact.addFriend(modalWindow.subject.id);
     }
 
-    function kick_from_friends()
-    {
+    const kick_from_friends = () => {
         modalWindow.setIsActive(false);
         contact.deleteFriend(modalWindow.subject.id);
     }
 
-    function add_to_blacklist()
-    {
+    const add_to_blacklist = () => {
         contact.ban(modalWindow.subject.id, () => {
             modalWindow.setIsActive(false);
         }, () => {
         });
     }
 
-    function  delete_from_blacklist()
-    {
+    const delete_from_blacklist = () => {
         contact.unban(modalWindow.subject.id, () => {
             modalWindow.setIsActive(false);
         }, () => {
@@ -55,8 +50,7 @@ function ModalWindow()
         });
     }
 
-    function blacklistHandle()
-    {
+    const blacklistHandle = () => {
         if (contact.isFriend(modalWindow.subject))
         {
             kick_from_friends();
@@ -71,8 +65,7 @@ function ModalWindow()
         modalWindow.setIsActive(false);
     }
 
-    function openDirectChannel()
-    {
+    const openDirectChannel = () => {
         let temp : any = {
             id : modalWindow.subject.id,
             channel : modalWindow.subject.username,
@@ -85,8 +78,7 @@ function ModalWindow()
         modalWindow.setIsActive(false);
     }
 
-    function handleSanction(type : string)
-    {
+    const handleSanction = (type : string) => {
         if (type === 'kick') {
             socket.emit('kick', {
                 'channel' : chat.currentChannelName,
@@ -108,8 +100,7 @@ function ModalWindow()
         modalWindow.setIsActive(false);
     }
 
-    function makeAdmin()
-    {
+    const makeAdmin = () => {
         let putAdmin : AxiosRequestConfig = {
             method: 'put',
             url: `${API_URL}:${HTTP_PORT}/api/channel/admin/`,
@@ -129,8 +120,7 @@ function ModalWindow()
             modalWindow.setIsActive(false);
     }
 
-    function deleteAdmin()
-    {
+    const deleteAdmin = () => {
         let putAdmin : AxiosRequestConfig = {
             method: 'delete',
             url: `${API_URL}:${HTTP_PORT}/api/channel/admin/`,
@@ -151,7 +141,7 @@ function ModalWindow()
         modalWindow.setIsActive(false);
     }
 
-    function AdminPart() {
+    const AdminPart = () => {
         if (location.pathname.split('/')[1] !== 'channel')
             return <></>;
         if (modalWindow.subject.isOwner) {
@@ -192,8 +182,7 @@ function ModalWindow()
 
     }
 
-    function SpectateBttn()
-    {
+    const SpectateBttn = () => {
         socket.emit("is-in-game", modalWindow.subject.id);
         socket.once("in-game", ((e : any) => {
         if (e['userId'] === modalWindow.subject.id)
@@ -211,8 +200,7 @@ function ModalWindow()
         )
     }
 
-    function makeDuel(type : string)
-    {
+    const makeDuel = (type : string) => {
         let temp =
             {
                 rivalId : +modalWindow.subject.id,
@@ -222,14 +210,13 @@ function ModalWindow()
         modalWindow.setIsActive(false);
     }
 
-    function openProfile() {
+    const openProfile = () => {
         const userId = modalWindow.subject.id;
         modalWindow.setIsActive(false);
         return navigate("/profile/" + userId, {replace: true});
     }
 
-    function MainPart()
-    {
+    const MainPart = () => {
         const contact = useContact();
 
         const isFriend = contact.isFriend(modalWindow.subject);
@@ -278,5 +265,3 @@ function ModalWindow()
             </div>
         )
 }
-
-export default ModalWindow;

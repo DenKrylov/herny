@@ -20,7 +20,7 @@ interface ContactContextType {
 
 const ContactContext = React.createContext<ContactContextType>(null!);
 
-export function ContactProvider({ children }: { children: React.ReactNode }) {
+export const ContactProvider = ({ children }: { children: React.ReactNode }) => {
     const auth = useAuth();
     const [friendList, setFriendList] = useState<any[]>([]);
     const [blackList, setBlackList] = useState<any[]>([]);
@@ -143,6 +143,6 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
     return <ContactContext.Provider value={value}>{children}</ContactContext.Provider>;
 }
 
-export function useContact() {
+export const useContact = () => {
     return React.useContext(ContactContext);
 }

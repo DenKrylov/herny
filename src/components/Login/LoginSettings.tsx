@@ -1,17 +1,16 @@
 import React from "react";
-import {Avatar, Nickname} from "./Settings";
-import BackgroundImage from "../pong.jpg";
+import {Avatar, Nickname} from "../Settings/Settings";
+// import BackgroundImage from "../pong.jpg";
 import {Box, Button, Stack} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
 
-export default function LoginSettings()
-{
+export const LoginSettings = () => {
     const navigate = useNavigate();
 
     return(
         <Box sx={{
-            background: `url(${BackgroundImage})`,
+            // background: `url(${BackgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'top',
             minHeight: '100%',

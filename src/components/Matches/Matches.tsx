@@ -1,7 +1,7 @@
 import React from "react";
-import {useAuth} from "../auth/auth.context";
+import {useAuth} from "../../auth/auth.context";
 import {useFetch} from "usehooks-ts";
-import {API_URL, HTTP_PORT} from "../config";
+import {API_URL, HTTP_PORT} from "../../config";
 import {Paper, Stack, Typography} from "@mui/material";
 
 const url = `${API_URL}:${HTTP_PORT}/api/match/user/`;
@@ -20,7 +20,7 @@ interface MatchInterface {
   loser_username: string;
 }
 
-export default function Matches({ userId }: MatchesProps) {
+export const Matches = ({ userId }: MatchesProps) => {
   let auth = useAuth();
 
   const { data, error } = useFetch<MatchInterface[]>(url + userId, {

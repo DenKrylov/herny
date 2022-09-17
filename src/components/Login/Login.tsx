@@ -1,19 +1,18 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import { useAuth } from "../auth/auth.context";
+import { useAuth } from "../../auth/auth.context";
 import OauthPopup from 'react-oauth-popup';
-import LogoIcon from '../static/42_logo.svg';
+// import LogoIcon from '../../static/42_logo.svg';
 import {useNavigate, useLocation} from "react-router-dom";
-import {LOGIN_REDIRECT, PORT_REDIRECT} from "../config";
+import {LOGIN_REDIRECT, PORT_REDIRECT} from "../../config";
 import {Alert, Box, Button, Icon, Stack, Typography} from "@mui/material";
-import BackgroundImage from '../pong.jpg';
+// import BackgroundImage from '../../pong.jpg';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 
-function Login()
-{
+export const Login = () => {
 	const auth = useAuth();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -57,7 +56,7 @@ function Login()
 
 	return (
 		<Box sx={{
-			background: `url(${BackgroundImage})`,
+			// background: `url(${BackgroundImage})`,
 			backgroundSize: 'cover',
 			backgroundPosition: 'top',
 			minHeight: '100%',
@@ -102,7 +101,8 @@ function Login()
 									display: 'flex',
 									height: 'inherit',
 									width: 'inherit'
-								}} src={LogoIcon}/>
+								}} />
+								{/* }} src={LogoIcon}/> */}
 							</Icon>
 						</Stack>
 					</Button>
@@ -111,5 +111,3 @@ function Login()
 		</Box>
 	)
 }
-
-export default Login;

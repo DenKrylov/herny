@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Outlet, useNavigate} from "react-router-dom";
-import {useAuth} from "../auth/auth.context";
-import {useChat} from "../contexts/chat.context";
-import Matchmacking from "./Matchmacking";
-import Duel from "./Duel";
+import {useAuth} from "../../auth/auth.context";
+import {useChat} from "../../contexts/chat.context";
+import { Matchmacking } from "../Matchmacking/Matchmacking";
+import { Duel } from "../Duel/Duel";
 import {
     BottomNavigation,
     BottomNavigationAction,
@@ -21,7 +21,7 @@ import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 
-export default function TopPanel() {
+export const TopPanel = () => {
     const auth = useAuth();
     const navigate = useNavigate();
 
@@ -59,8 +59,7 @@ export default function TopPanel() {
     )
 }
 
-function HolddedPMC()
-{
+const HolddedPMC = () => {
     const chat = useChat();
     const navigate = useNavigate();
 

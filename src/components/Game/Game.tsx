@@ -1,12 +1,11 @@
 import React, {useMemo, useRef, useState} from 'react';
-import '../styles/Game.css'
-import {useGame} from "../contexts/game.context";
+import './Game.css'
+import {useGame} from "../../contexts/game.context";
 import {useEffectOnce, useEventListener, useUpdateEffect} from "usehooks-ts";
-import {useSocketIO} from "../contexts/socket.io.context";
+import {useSocketIO} from "../../contexts/socket.io.context";
 import {useNavigate} from "react-router-dom";
 
-function Game()
-{
+export const Game = () => {
 	const game = useGame();
 	const socket = useSocketIO();
 	const navigate = useNavigate();
@@ -171,5 +170,3 @@ function Game()
 		</>
 	)
 }
-
-export default Game;

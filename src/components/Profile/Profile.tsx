@@ -1,19 +1,19 @@
 import React, {useState} from "react";
-import Matches from "./Matches";
-import {useAuth} from "../auth/auth.context";
+import { Matches} from "../Matches/Matches";
+import {useAuth} from "../../auth/auth.context";
 import {useNavigate, useParams} from "react-router-dom";
-import NotFound from "./NotFound";
+import {NotFound} from "../NotFound/NotFound";
 import {useInterval} from "usehooks-ts";
 import axios from "axios";
 import Stack from "react-bootstrap/Stack";
-import {API_URL, HTTP_PORT} from "../config";
-import "../styles/Profile.css";
+import {API_URL, HTTP_PORT} from "../../config";
+import "./Profile.css";
 import {Button, Box, Container, Accordion, AccordionSummary, AccordionDetails, Typography} from '@mui/material';
 
 
 const url = `${API_URL}:${HTTP_PORT}/api/profile/`;
 
-export default function Profile() {
+export const Profile = () => {
   let params = useParams<"id">();
   const auth = useAuth();
   const navigate = useNavigate();
@@ -147,31 +147,3 @@ export default function Profile() {
     </Container>
   );
 }
-//
-// function FriendButton(props: any) {
-//   const contact = useContact();
-//
-//   useEffect(() => {}, [contact]);
-//
-//   if (!props.userId) {
-//     return <></>
-//   }
-//
-//   if (contact.isBanned({id: props.userId})) {
-//     return (<Button variant={"contained"} onClick={() => {
-//       contact.unban(props.userId);
-//     }}>Unban</Button>);
-//   }
-//
-//   if (!contact.isFriend({id: props.userId})) {
-//     return (<Button onClick={() => {
-//       contact.addFriend(props.userId);
-//     }}>Add to friends</Button>);
-//   }
-//
-//   return (
-//       <Button onClick={() => {
-//         contact.deleteFriend(props.userId);
-//       }}>Remove from friends</Button>
-//   );
-// }

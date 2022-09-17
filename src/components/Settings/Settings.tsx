@@ -1,18 +1,17 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import {useGame} from "../contexts/game.context";
-import {useAuth} from "../auth/auth.context";
+import {useGame} from "../../contexts/game.context";
+import {useAuth} from "../../auth/auth.context";
 import {useEffectOnce} from "usehooks-ts";
 import {useNavigate} from "react-router-dom";
 import {Alert, Button, Card, Col, Container, Form, Row, Stack} from "react-bootstrap";
 
-import '../styles/Settings.css';
-import {API_URL, HTTP_PORT} from "../config";
+import './Settings.css';
+import {API_URL, HTTP_PORT} from "../../config";
 
 
-export default function Settings()
-{
+export const Settings = () => {
     return(
         <>
             <Container>
@@ -35,7 +34,7 @@ export default function Settings()
     )
 }
 
-export function Nickname() {
+export const Nickname = () => {
     const auth = useAuth();
 
     const [nickname, setNickname] = useState('');
@@ -72,7 +71,7 @@ export function Nickname() {
     )
 }
 
-export function Avatar() {
+export const Avatar = () => {
     const auth = useAuth();
     const navigate = useNavigate();
 
@@ -128,8 +127,7 @@ export function Avatar() {
     )
 }
 
-function SecondFactorAuth()
-{
+export const SecondFactorAuth = () => {
     const auth = useAuth();
 
     const [QR, setQR] = useState();
@@ -235,7 +233,7 @@ function SecondFactorAuth()
     );
 }
 
-function ChangeFieldOrientation() {
+const ChangeFieldOrientation = ()  => {
     const game = useGame();
     const [, setCookie,] = useCookies(["up", 'down', 'direction']);
 
@@ -261,7 +259,7 @@ function ChangeFieldOrientation() {
     );
 }
 
-function SetKey(props: any) {
+const SetKey = (props: any) => {
     const game = useGame();
     const [, setCookie,] = useCookies(["up", 'down', 'direction']);
     const htmlTagWithPlaceholder = useRef<any>();

@@ -1,5 +1,5 @@
 
-export default function Unauthorized() {
+export const Unauthorized = () => {
     return (
         <div>401 Unauthorized!</div>
     );
